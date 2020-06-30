@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">RxjavaRetrofit</string>
     <string name="api_key">90be6c3fb2fb67bd42dea153ff8bb194</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
