@@ -46,13 +46,20 @@ class MainActivity : AppCompatActivity() {
                 // here we get both the results at a time.
                 sumMovies(one, second)
             })
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())//serve per dire che vogliamo che i dati passino su un altro thread rispetto al main di Android(ui)
+                                        // per non rallentare il processo (Multithreading).
+            .observeOn(AndroidSchedulers.mainThread())//serve per dire che vogliamo trasferire i dati dal thread io al main Thread
+                                                //*
             .subscribe({ onResponseFinalMovies(movies) },
                 { t -> onFailure(t) })
 
         compositeDisposable.addAll(finalDisposable)
     }
+
+    // * quando facciamo observable.subsribe, ci iscriviamo all'observable ed otteniamo un oggetto di tipo observer(o disposable
+    // cioè che con rxjava2 disposable che una volta pieno di oggetti da osservare li contiene e li manda a poco a poco, ed infine
+    // con la funzione dispose nell'onDestroy vengono eliminati per evitare di mantenere troppi dati in memoria -Memory leak-
+    // quindi praticamente ci de-iscriviamo all'observable)
 
     private fun sumMovies(one: Movies, second: Movies): Movies {
         movies = Movies(one.results.plus(second.results))
