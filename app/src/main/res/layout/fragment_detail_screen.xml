@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:layout_marginTop="200dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/detail_movie_photo"
+        android:contentDescription="Movie Image" />
 
-</FrameLayout>
+    <TextView
+        android:layout_below="@+id/detail_movie_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_movie_title"
+        android:layout_margin="5dp"
+        android:textSize="15sp"
+        android:text="Title : "/>
+
+    <TextView
+        android:layout_below="@+id/detail_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_movie_overview"
+        android:layout_margin="5dp"
+        android:text="OverView : "/>
+
+    <TextView
+        android:layout_below="@+id/detail_movie_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_movie_rating"
+        android:textSize="15sp"
+        android:layout_margin="5dp"
+        android:text="Rating : "/>
+
+</RelativeLayout>

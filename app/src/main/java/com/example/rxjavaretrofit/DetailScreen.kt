@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -20,6 +24,13 @@ class DetailScreen : Fragment() {
     private lateinit var observable: Observable<Result>
     private lateinit var disposable: Disposable
 
+
+    private lateinit var photo: ImageView
+    private lateinit var title: TextView
+    private lateinit var overview: TextView
+    private lateinit var rating: TextView
+    private lateinit var cardMovie: CardView
+
     var key_id = 0
 
     val compositeDisposable = CompositeDisposable()
@@ -28,8 +39,16 @@ class DetailScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val view = inflater.inflate(R.layout.fragment_detail_screen, container, false)
+
+        photo = view.findViewById(R.id.detail_movie_photo)
+        title = view.findViewById(R.id.detail_movie_title)
+        overview = view.findViewById(R.id.detail_movie_overview)
+        rating = view.findViewById(R.id.detail_movie_rating)
+
         finalCall()
-        return inflater.inflate(R.layout.fragment_detail_screen, container, false)
+
+        return view
     }
 
 
@@ -45,7 +64,7 @@ class DetailScreen : Fragment() {
                 { result -> onSuccess(result) },
                 { error -> onError(error) })
 
-        compositeDisposable.addAll(disposable)
+        compositeDisposable.add(disposable)
     }
 
     // * quando facciamo observable.subsribe, ci iscriviamo all'observable ed otteniamo un oggetto di tipo observer(o disposable
@@ -55,8 +74,14 @@ class DetailScreen : Fragment() {
 
 
     private fun onSuccess(result: Result) {
-        progress_bar.visibility = View.GONE
-        val response1 = result
+//        progress_bar.visibility = View.GONE
+        Glide
+            .with(requireActivity())
+            .load("https://image.tmdb.org/t/p/w500${result.poster_path}")
+            .into(photo)
+        title.text = "Title: "+ result.title
+        overview.text = result.overview
+        rating.text = "Rating : "+ result.vote_average.toString()
     }
 
     private fun onError(t: Throwable) {
