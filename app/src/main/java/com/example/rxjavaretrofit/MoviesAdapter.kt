@@ -1,10 +1,13 @@
 package com.example.rxjavaretrofit
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -28,6 +31,7 @@ class MoviesViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
     private val title:TextView = itemView.findViewById(R.id.movie_title)
     private val overview:TextView = itemView.findViewById(R.id.movie_overview)
     private val rating:TextView = itemView.findViewById(R.id.movie_rating)
+    private val cardMovie: CardView = itemView.findViewById(R.id.cardMovie)
 
     fun bind(movie: Result) {
         Glide
@@ -37,5 +41,11 @@ class MoviesViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
         title.text = "Title: "+movie.title
         overview.text = movie.overview
         rating.text = "Rating : "+movie.vote_average.toString()
+
+        cardMovie.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("movie_id", movie.id)
+            itemView.findNavController().navigate(R.id.detailScreen, bundle)
+        }
     }
 }
