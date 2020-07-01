@@ -9,17 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_main_screen.*
 
 class DetailScreen : Fragment() {
-    private lateinit var movies: Movies
 
     private lateinit var observable: Observable<Result>
     private lateinit var disposable: Disposable
@@ -29,9 +26,6 @@ class DetailScreen : Fragment() {
     private lateinit var title: TextView
     private lateinit var overview: TextView
     private lateinit var rating: TextView
-    private lateinit var cardMovie: CardView
-
-    var key_id = 0
 
     val compositeDisposable = CompositeDisposable()
     override fun onCreateView(
@@ -56,7 +50,7 @@ class DetailScreen : Fragment() {
 //        key_id = arguments?.getInt("movie_id")!!
         val args = DetailScreenArgs.fromBundle(requireArguments())
 
-        observable = ServiceBuilder.buildService().getMovieDetail(args.keyId, getString(R.string.api_key))
+        observable = TmdbServiceBuilder.buildService().getMovieDetail(args.keyId, getString(R.string.api_key))
 
         disposable = observable
             .subscribeOn(Schedulers.io()) //serve per dire che vogliamo che i dati passino su un altro thread rispetto al main di Android(ui)

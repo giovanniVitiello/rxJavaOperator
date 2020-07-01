@@ -1,6 +1,5 @@
 package com.example.rxjavaretrofit
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,9 +42,15 @@ class MoviesViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
         rating.text = "Rating : "+movie.vote_average.toString()
 
         cardMovie.setOnClickListener {
+
+//           navigation with Bundle
+
 //            val bundle = Bundle()
 //            bundle.putInt("movie_id", movie.id)
 //            itemView.findNavController().navigate(R.id.detailScreen, bundle)
+
+//           navigation with safeArgs
+
             itemView.findNavController().navigate(MainScreenDirections.actionMainScreenToDetailScreen(movie.id))
         }
     }

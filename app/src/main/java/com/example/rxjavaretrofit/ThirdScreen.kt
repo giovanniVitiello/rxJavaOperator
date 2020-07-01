@@ -14,7 +14,7 @@ class ThirdScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second_screen, container, false)
+        return inflater.inflate(R.layout.fragment_third_screen, container, false)
     }
 
 }

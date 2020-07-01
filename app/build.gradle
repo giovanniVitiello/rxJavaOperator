@@ -76,4 +76,8 @@ dependencies {
     // For BottomNavigationView from Material Components
     implementation 'com.google.android.material:material:1.1.0'
 
+    // Koin for Unit tests
+    testImplementation "org.koin:koin-test:2.1.6"
+    implementation 'org.koin:koin-android:2.1.6'
+
 }

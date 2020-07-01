@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,7 +26,6 @@ class MainScreen : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-//        findNavController().navigate(MainScreenDirections.actionMainScreenToDetailScreen())
         finalCall()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main_screen, container, false)
@@ -35,9 +33,9 @@ class MainScreen : Fragment() {
     }
 
     private fun finalCall() {
-        observable1 = ServiceBuilder.buildService().getUpmovies(getString(R.string.api_key))
+        observable1 = TmdbServiceBuilder.buildService().getUpmovies(getString(R.string.api_key))
 
-        observable2 = ServiceBuilder.buildService().getMovies(getString(R.string.api_key))
+        observable2 = TmdbServiceBuilder.buildService().getMovies(getString(R.string.api_key))
 
         finalDisposable = Observable.zip(
             observable1,
