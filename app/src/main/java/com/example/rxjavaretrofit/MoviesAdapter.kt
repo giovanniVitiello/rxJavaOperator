@@ -43,9 +43,10 @@ class MoviesViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
         rating.text = "Rating : "+movie.vote_average.toString()
 
         cardMovie.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putInt("movie_id", movie.id)
-            itemView.findNavController().navigate(R.id.detailScreen, bundle)
+//            val bundle = Bundle()
+//            bundle.putInt("movie_id", movie.id)
+//            itemView.findNavController().navigate(R.id.detailScreen, bundle)
+            itemView.findNavController().navigate(MainScreenDirections.actionMainScreenToDetailScreen(movie.id))
         }
     }
 }

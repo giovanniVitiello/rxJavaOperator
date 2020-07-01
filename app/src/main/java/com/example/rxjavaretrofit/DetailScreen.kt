@@ -53,8 +53,10 @@ class DetailScreen : Fragment() {
 
 
     private fun finalCall() {
-        key_id = arguments?.getInt("movie_id")!!
-        observable = ServiceBuilder.buildService().getMovieDetail(key_id, getString(R.string.api_key))
+//        key_id = arguments?.getInt("movie_id")!!
+        val args = DetailScreenArgs.fromBundle(requireArguments())
+
+        observable = ServiceBuilder.buildService().getMovieDetail(args.keyId, getString(R.string.api_key))
 
         disposable = observable
             .subscribeOn(Schedulers.io()) //serve per dire che vogliamo che i dati passino su un altro thread rispetto al main di Android(ui)

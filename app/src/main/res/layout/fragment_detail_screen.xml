@@ -6,11 +6,11 @@
     tools:context=".DetailScreen">
 
     <ImageView
-        android:layout_marginTop="200dp"
+        android:id="@+id/detail_movie_photo"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/detail_movie_photo"
+        android:layout_marginTop="200dp"
         android:contentDescription="Movie Image" />
 
     <TextView
