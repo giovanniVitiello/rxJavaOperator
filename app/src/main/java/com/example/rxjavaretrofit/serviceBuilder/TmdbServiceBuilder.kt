@@ -1,5 +1,6 @@
-package com.example.rxjavaretrofit
+package com.example.rxjavaretrofit.serviceBuilder
 
+import com.example.rxjavaretrofit.endPoints.TmdbEndpoints
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

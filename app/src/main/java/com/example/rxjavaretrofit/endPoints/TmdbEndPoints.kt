@@ -1,5 +1,7 @@
-package com.example.rxjavaretrofit
+package com.example.rxjavaretrofit.endPoints
 
+import com.example.rxjavaretrofit.objectData.Movies
+import com.example.rxjavaretrofit.objectData.Result
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

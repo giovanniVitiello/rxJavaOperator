@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
+import com.example.rxjavaretrofit.objectData.Result
+import com.example.rxjavaretrofit.serviceBuilder.TmdbServiceBuilder
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
