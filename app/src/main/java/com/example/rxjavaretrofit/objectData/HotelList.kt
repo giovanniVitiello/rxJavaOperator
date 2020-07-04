@@ -1,15 +1,18 @@
 package com.example.rxjavaretrofit.objectData
 
 data class HotelList(
-    val hotels: List<Hotel>
+    val `data`: List<Data>,
+    val paging: Paging,
+    val status: Status
 ) {
-    data class Hotel(
+    data class Data(
         val awards: List<Award>,
         val bearing: String,
         val business_listings: BusinessListings,
         val distance: String,
         val distance_string: Any,
         val hotel_class: String,
+        val hotel_class_attribution: String,
         val is_closed: Boolean,
         val is_long_closed: Boolean,
         val latitude: String,
@@ -110,8 +113,30 @@ data class HotelList(
         }
 
         data class SpecialOffers(
-            val desktop: List<Any>,
+            val desktop: List<Desktop>,
             val mobile: List<Any>
-        )
+        ) {
+            data class Desktop(
+                val headline: String,
+                val offerless_click_tracking_url: String,
+                val url: String
+            )
+        }
     }
+
+    data class Paging(
+        val results: String,
+        val total_results: String
+    )
+
+    data class Status(
+        val auction_key: String,
+        val autobroadened: Boolean,
+        val commerce_country_iso_code: String,
+        val doubleClickZone: String,
+        val pricing: String,
+        val primary_geo: String,
+        val progress: String,
+        val unfiltered_total_size: String
+    )
 }
