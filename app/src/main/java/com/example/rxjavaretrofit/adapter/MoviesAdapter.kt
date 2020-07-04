@@ -1,4 +1,4 @@
-package com.example.rxjavaretrofit
+package com.example.rxjavaretrofit.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.rxjavaretrofit.MainScreenDirections
+import com.example.rxjavaretrofit.R
 import com.example.rxjavaretrofit.objectData.Result
 
 class MoviesAdapter(val movies: List<Result>): RecyclerView.Adapter<MoviesViewHolder>() {
@@ -52,7 +54,11 @@ class MoviesViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
 
 //           navigation with safeArgs
 
-            itemView.findNavController().navigate(MainScreenDirections.actionMainScreenToDetailScreen(movie.id))
+            itemView.findNavController().navigate(
+                MainScreenDirections.actionMainScreenToDetailScreen(
+                    movie.id
+                )
+            )
         }
     }
 }

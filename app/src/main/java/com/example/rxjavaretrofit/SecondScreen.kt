@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rxjavaretrofit.adapter.HotelsAdapter
+import com.example.rxjavaretrofit.adapter.MoviesAdapter
 import com.example.rxjavaretrofit.objectData.HotelList
 import com.example.rxjavaretrofit.serviceBuilder.TripadvisorServiceBuilder
 import io.reactivex.Observable
@@ -14,6 +17,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_main_screen.*
+import kotlinx.android.synthetic.main.fragment_second_screen.*
 
 class SecondScreen : Fragment() {
 
@@ -52,7 +57,11 @@ class SecondScreen : Fragment() {
 
     private fun onSuccess(result: HotelList) {
         Log.i("result", result.toString())
-
+        recyclerViewHotels.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(activity)
+            adapter = HotelsAdapter(result.data)
+        }
     }
 
     private fun onError(t: Throwable) {

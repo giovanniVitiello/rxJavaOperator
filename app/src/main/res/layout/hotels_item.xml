@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardHotel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/hotel_photo"
+                android:contentDescription="Hotel Image" />
+
+            <TextView
+                android:layout_below="@+id/hotel_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hotel_name"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                android:text="Name : "/>
+
+
+            <TextView
+                android:layout_below="@+id/hotel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/is_open"
+                android:layout_margin="5dp"
+                android:text="Closed : "/>
+
+            <TextView
+                android:layout_below="@+id/is_open"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hotel_rating"
+                android:textSize="15sp"
+                android:layout_margin="5dp"
+                android:text="Rating : "/>
+
+            <TextView
+                android:layout_below="@+id/hotel_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/hotel_ranking"
+                android:textSize="15sp"
+                android:layout_margin="5dp"
+                android:text="Ranking : "/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
