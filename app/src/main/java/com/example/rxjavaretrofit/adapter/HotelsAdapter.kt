@@ -37,7 +37,8 @@ class HotelsViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
     fun bind(hotel: HotelList.Data) {
         Glide
             .with(itemView.context)
-            .load({hotel.photo.images.medium.url})
+            .load(hotel.photo.images.small.url)
+            .fitCenter()
             .into(hotelPhoto)
         hotelName.text = "Title: "+hotel.name
         isOpened.text = "Closed: "+hotel.is_closed

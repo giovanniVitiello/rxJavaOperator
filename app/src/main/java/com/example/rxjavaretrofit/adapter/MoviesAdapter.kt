@@ -52,8 +52,7 @@ class MoviesViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
 //            bundle.putInt("movie_id", movie.id)
 //            itemView.findNavController().navigate(R.id.detailScreen, bundle)
 
-//           navigation with safeArgs
-
+//          Navigation with safeArgs
             itemView.findNavController().navigate(
                 MainScreenDirections.actionMainScreenToDetailScreen(
                     movie.id
