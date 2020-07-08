@@ -63,8 +63,7 @@ class MainScreen : Fragment() {
     // quindi praticamente ci de-iscriviamo all'observable)
 
     private fun sumMovies(one: Movies, second: Movies): Movies {
-        val movies = Movies(one.results.plus(second.results))
-        return movies
+        return Movies(one.results.plus(second.results))
     }
 
     private fun onResponseFinalMovies(response: Movies) {
