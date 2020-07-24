@@ -41,14 +41,14 @@ class ThirdScreenViewModel : ViewModel() {
             )
         compositeDisposable.add(disposable)
     }
-//    private fun loadUser(userId: Int) {
-//        val observable = KtorServiceBuilder.buildService().getUser(/*"0"*/)
-//        val disposable = observable
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe(
-//                { response -> userState.value = UserState.UserLoaded() },
-//                { t -> Log.i("error loading user ", "$t") }
-//            )
-//    }
+    private fun loadUser(userId: Int) {
+        val observable = KtorServiceBuilder.buildService().getUser(userId)
+        val disposable = observable
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe(
+                { response -> userState.value = UserState.UserLoaded(response) },
+                { t -> Log.i("error loading user ", "$t") }
+            )
+    }
 }
