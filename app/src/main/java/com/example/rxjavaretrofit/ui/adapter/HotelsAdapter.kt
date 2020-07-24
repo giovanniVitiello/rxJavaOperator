@@ -1,4 +1,4 @@
-package com.example.rxjavaretrofit.adapter
+package com.example.rxjavaretrofit.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +9,9 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.rxjavaretrofit.R
-import com.example.rxjavaretrofit.objectData.HotelList
+import com.example.rxjavaretrofit.model.HotelModel
 
-class HotelsAdapter(val hotels: List<HotelList.Data>): RecyclerView.Adapter<HotelsViewHolder>() {
+class HotelsAdapter(val hotels: List<HotelModel.Data>): RecyclerView.Adapter<HotelsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotelsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.hotels_item, parent, false)
         return HotelsViewHolder(view)
@@ -34,7 +34,7 @@ class HotelsViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
     private val hotelRanking: TextView = itemView.findViewById(R.id.hotel_ranking)
     private val cardHotel: CardView = itemView.findViewById(R.id.cardHotel)
 
-    fun bind(hotel: HotelList.Data) {
+    fun bind(hotel: HotelModel.Data) {
         Glide
             .with(itemView.context)
             .load(hotel.photo.images.small.url)

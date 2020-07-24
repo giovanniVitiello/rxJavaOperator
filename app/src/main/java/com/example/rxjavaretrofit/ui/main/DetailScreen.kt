@@ -1,4 +1,4 @@
-package com.example.rxjavaretrofit
+package com.example.rxjavaretrofit.ui.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.rxjavaretrofit.objectData.Result
+import com.example.rxjavaretrofit.R
+import com.example.rxjavaretrofit.model.Result
 import com.example.rxjavaretrofit.serviceBuilder.TmdbServiceBuilder
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

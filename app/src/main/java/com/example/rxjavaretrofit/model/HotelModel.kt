@@ -1,6 +1,6 @@
-package com.example.rxjavaretrofit.objectData
+package com.example.rxjavaretrofit.model
 
-data class HotelList(
+data class HotelModel(
     val `data`: List<Data>,
     val paging: Paging,
     val status: Status

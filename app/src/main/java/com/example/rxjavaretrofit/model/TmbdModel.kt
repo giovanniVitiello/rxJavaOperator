@@ -1,4 +1,4 @@
-package com.example.rxjavaretrofit.objectData
+package com.example.rxjavaretrofit.model
 
 open class Movies(open val results: List<Result>)
 //

@@ -1,4 +1,4 @@
-package com.example.rxjavaretrofit
+package com.example.rxjavaretrofit.ui.second
 
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rxjavaretrofit.adapter.HotelsAdapter
-import com.example.rxjavaretrofit.objectData.HotelList
-import com.example.rxjavaretrofit.objectData.Users
-import com.example.rxjavaretrofit.serviceBuilder.LocalHostServiceBuilder
+import com.example.rxjavaretrofit.R
+import com.example.rxjavaretrofit.ui.adapter.HotelsAdapter
+import com.example.rxjavaretrofit.model.HotelModel
 import com.example.rxjavaretrofit.serviceBuilder.TripadvisorServiceBuilder
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,9 +19,9 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_second_screen.*
 
-class ThirdScreen : Fragment() {
+class SecondScreen : Fragment() {
 
-    private lateinit var observable: Observable<Users>
+    private lateinit var observable: Observable<HotelModel>
     private lateinit var disposable: Disposable
 
     override fun onCreateView(
@@ -33,14 +32,14 @@ class ThirdScreen : Fragment() {
         finalCall()
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third_screen, container, false)
+        return inflater.inflate(R.layout.fragment_second_screen, container, false)
     }
 
     private fun finalCall() {
 //        key_id = arguments?.getInt("movie_id")!!
 //        val args = DetailScreenArgs.fromBundle(requireArguments())
 
-        observable = LocalHostServiceBuilder.buildService().getUsers()
+        observable = TripadvisorServiceBuilder.buildService().getHotel(getString(R.string.api_key_tripadvisor))
 
         disposable = observable
             .subscribeOn(Schedulers.io()) //serve per dire che vogliamo che i dati passino su un altro thread rispetto al main di Android(ui)
@@ -55,13 +54,13 @@ class ThirdScreen : Fragment() {
         compositeDisposable.add(disposable)
     }
 
-    private fun onSuccess(result: Users) {
-        Log.i("result", result.users.toString())
-//        recyclerViewHotels.apply {
-//            setHasFixedSize(true)
-//            layoutManager = LinearLayoutManager(activity)
-//            adapter = HotelsAdapter(result.data)
-//        }
+    private fun onSuccess(result: HotelModel) {
+        Log.i("result", result.toString())
+        recyclerViewHotels.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(activity)
+            adapter = HotelsAdapter(result.data)
+        }
     }
 
     private fun onError(t: Throwable) {
